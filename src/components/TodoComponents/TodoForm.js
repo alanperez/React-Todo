@@ -3,9 +3,16 @@ import React from "react"
 const TodoForm = props => {
     return(
         <form>
-            <input placeholder="..todo" onChaange={props.updateStateMEssage} />
-    
+            <input  type='text' 
+                    placeholder='task' 
+                    name='input' 
+                    value={props.id}
+                    onChange= {props.handleChange} 
+            />
+            <button onClick={props.addTask}>ADD TODO</button>
+            <button onClick={props.removeTask}>REMOVE</button>
         </form>
+        
     )
 }
 

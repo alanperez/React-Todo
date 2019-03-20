@@ -1,4 +1,5 @@
 import React from 'react';
+import Todo from './components/TodoComponents/Todo'
 import TodoForm from './components/TodoComponents/TodoForm'
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -23,8 +24,11 @@ class App extends React.Component {
     }
   }
 
-  messageChangeHandler = event => {
-    this.setState({change: event.target.value})
+  handleChange = event => {
+    console.log(event.target)
+    this.setState({
+      [event.target.name] : event.target.value
+    })
   }
 
 
@@ -34,7 +38,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Todo List: MVP</h1>
-        <TodoForm change={this.state.change}/>
+        <TodoForm addTask={this.addTask} handleChange={this.handleChange} input={this.state.input}/>
+        <Todo />
       </div>
     );
   }
