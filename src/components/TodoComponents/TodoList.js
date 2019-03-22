@@ -5,10 +5,11 @@ import React from 'react';
 import Todo from './Todo';
 
 const TodoList = props => {
+    // console.log("inside todo list", props)
     return (
         <React.Fragment>
             {props.todoItems.map(todoItem => {
-                return <Todo key={todoItem.id} todoInfo={todoItem} />
+                return <Todo key={todoItem.id} todoInfo={todoItem}handleToggle={props.handleToggle}/>
             })}
     </React.Fragment>
     )

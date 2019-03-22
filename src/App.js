@@ -2,6 +2,7 @@ import React from 'react';
 // import Todo from './components/TodoComponents/Todo'
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm'
+// import './app.css'
 
 
 
@@ -53,20 +54,64 @@ class App extends React.Component {
     });
   };
 
-  clearBtn = event => {
-    event.preventDefault();
-  }
+
+  handleToggle = id => {
+  // 1. make a copy of the state
+  const stateCopy = this.state.todos.slice();
+  // 2. update the copy with the opposite completed status
+    const updatedCopy = stateCopy.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed; 
+        return todo;
+      } else {
+        return todo;
+      }
+    });
+    this.setState({
+       // 3. update the state with the updated copy
+      todos: updatedCopy
+    });
+  };
+
+  handleClearItems = e => {
+    e.preventDefault();
+    //  clear the completed items
+    //1. find the uncompleted items
+    const filtered = this.state.todos.filter(todo =>  !todo.completed)
+    // console.log(filtered);
+    // 2. set the state with the new state
+    this.setState({
+      todos: filtered
+    })
+  };
+
+
+  // toggleTodo = todoId => {
+  //   this.setState({
+  //     todos: this.state.todos.map(todo => {
+  //       if (todoId === todo.id) {
+  //         return {
+  //           ...todo, completed: !todo.completed
+  //         };
+  //       }
+  //       return todo;
+  //     })
+  //   });
+  // };
 
   render() {
     return (
       <div>
         <h1>Todo List: MVP</h1>
-        <TodoList todoItems={this.state.todos}/>
+        <TodoList
+        todoItems={this.state.todos}
+        handleToggle={this.handleToggle}
+        />
         <TodoForm 
+          handleClearItems={this.handleClearItems}
           handleChange={this.handleChange}
           inputText={this.state.inputText}
           handleClick={this.handleClick}
-          clearBtn={this.clearBtn}
         />
       </div>
     );
