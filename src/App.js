@@ -2,7 +2,7 @@ import React from 'react';
 // import Todo from './components/TodoComponents/Todo'
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm'
-// import './app.css'
+import './components/TodoComponents/Todo.css'
 
 
 
@@ -101,7 +101,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Todo List: MVP</h1>
         <TodoList
         todoItems={this.state.todos}
