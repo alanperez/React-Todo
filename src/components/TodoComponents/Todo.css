@@ -1,0 +1,15 @@
+body {
+    background: url('https://images.pexels.com/photos/209678/pexels-photo-209678.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 1260w') no-repeat;
+    font-family: sans-serif;
+    font-weight: 900;
+}
+.container {
+    background-color: transparent;
+    /* color:white; */
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+.completed {
+    text-decoration: line-through;
+}
